@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>
+      Big Runes Dealer - runeword finding app with multiple profiles support
+    </title>
     <link
       rel="icon"
       type="image/png"
@@ -18,38 +20,44 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="style.css" />
+    <script src="data.js" defer></script>
     <script src="script.js" defer></script>
   </head>
   <body>
     <header>
-      <h1>Big Runes Dealer</h1>
+      <h1>Big <strong>Runes</strong> Dealer</h1>
       <nav class="navbar" id="navbar">
         <button class="add-profile-button">New profile</button>
       </nav>
     </header>
-    <body>
-      <div class="runes-inventory" id="runes-inventory">
 
+    <body>
+      <div class="content-container" id="content-container">
+        <div class="runes-inventory" id="runes-inventory"></div>
+        <div
+          class="availible-runewords-container"
+          id="availible-runewords-container"
+        >
+          <ul class="availible-runewords" id="availible-runewords"></ul>
+        </div>
       </div>
+
       <div>
         <button>Configure search</button>
       </div>
+
       <div class="search-controls" id="search-controls">
         <button>Weapon runewords</button>
         <button>Armor runewords</button>
         <button>All runewords</button>
       </div>
-      <div class="availible-runewords" id="availible-runewords">
 
-      </div>
       <div class="profile-controls" id="profile-controls">
         <p>Profile controls</p>
         <button>Rename</button>
         <button>Reset</button>
         <button>Delete</button>
       </div>
-      
-
     </body>
   </body>
 </html>

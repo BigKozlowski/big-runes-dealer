@@ -1,14 +1,100 @@
 @font-face {
-	font-family: 'Diablo'; 
-	src: url(/ofont.ru_Diablo.ttf); 
+  font-family: "Diablo";
+  src: url(/ofont.ru_Diablo.ttf);
 }
 
 html {
   box-sizing: border-box;
+  --main-bg-color: rgb(242, 242, 242);
+  --main-accent-color: #e91e63;
+  --main-content-color: rgb(43, 46, 74);
 }
 
 body {
   margin: 0;
+  padding: 0;
   min-height: 100vh;
   font-family: Diablo;
+  color: var(--main-content-color);
+  background-color: var(--main-bg-color);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+h1 strong {
+  color: var(--main-accent-color);
+}
+
+.content-container {
+  display: flex;
+}
+
+.availible-runewords {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.availible-runewords li {
+  margin: 0;
+  outline: 1px solid red;
+}
+
+.availible-runewords li * {
+  margin: 0;
+}
+
+.runes-inventory {
+  align-self: flex-start;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 40%;
+}
+
+.rune-container {
+  width: math(100%-1rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  outline: 1px solid red;
+  padding: 0.1rem 0.5rem;
+}
+
+.rune-container button {
+  padding: 0;
+  font-family: inherit;
+  cursor: pointer;
+  font-size: 1rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  border: none;
+  color: var(--main-bg-color);
+  background-color: var(--main-content-color);
+  outline: none;
+  border-radius: 50%;
+}
+
+.rune-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.rune-img-container {
+  width: 25%;
+  margin: 0 auto;
+}
+
+.rune-img {
+  transform: translateX(-40%);
+}
+
+.rune-container p {
+  margin: 0;
+  text-align: center;
+  padding: 0.1rem 0.5rem;
 }
