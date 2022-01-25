@@ -10,12 +10,14 @@ function removeRune(event) {
   if (playerRunes[event.target.dataset.rune]) {
     playerRunes[event.target.dataset.rune]--;
     renderRunes();
+    renderRunewords();
   }
 }
 
 function addRune(event) {
   playerRunes[event.target.dataset.rune]++;
   renderRunes();
+  renderRunewords();
 }
 
 function renderRunes() {
@@ -69,42 +71,68 @@ function renderRunes() {
   }
 }
 
+function countRunes(runes) {
+  const counts = {};
+  runes.forEach((rune) => {
+    if (!counts[rune]) {
+      counts[rune] = 1;
+    } else {
+      counts[rune]++;
+    }
+  });
+  return counts;
+}
+
+function checkRuneword(runes) {
+  const runesCount = countRunes(runes);
+
+  let check = true;
+  for (rune in runesCount) {
+    if (runesCount[rune] > playerRunes[rune]) {
+      check = false;
+    }
+  }
+  return check;
+}
+
 function renderRunewords() {
   runewordsElement.innerHTML = "";
   for (runeword of runeWords) {
-    const runewordContainer = document.createElement("li");
-    runewordContainer.classList.add("runeWord-container");
+    if (checkRuneword(runeword.runes)) {
+      const runewordContainer = document.createElement("li");
+      runewordContainer.classList.add("runeWord-container");
 
-    const runewordNameElement = document.createElement("h3");
-    runewordNameElement.classList.add("runeword-name");
-    runewordNameElement.textContent = runeword.name;
-    runewordContainer.appendChild(runewordNameElement);
+      const runewordNameElement = document.createElement("h3");
+      runewordNameElement.classList.add("runeword-name");
+      runewordNameElement.textContent = runeword.name;
+      runewordContainer.appendChild(runewordNameElement);
 
-    const runewordRecipe = document.createElement("p");
-    runewordRecipe.classList.add("runeword-recipe");
-    runewordRecipe.textContent = "Recipe: " + runeword.runes.join(" ");
-    runewordContainer.appendChild(runewordRecipe);
+      const runewordRecipe = document.createElement("p");
+      runewordRecipe.classList.add("runeword-recipe");
+      runewordRecipe.textContent = "Recipe: " + runeword.runes.join(" ");
+      runewordContainer.appendChild(runewordRecipe);
 
-    const runewordItem = document.createElement("p");
-    runewordItem.classList.add("runeword-item");
-    runewordItem.textContent = "Base item: " + runeword.itemType;
-    runewordContainer.appendChild(runewordItem);
+      const runewordItem = document.createElement("p");
+      runewordItem.classList.add("runeword-item");
+      runewordItem.textContent = "Base item: " + runeword.itemType;
+      runewordContainer.appendChild(runewordItem);
 
-    const runewordLevel = document.createElement("p");
-    runewordLevel.classList.add("runeword-level");
-    runewordLevel.textContent = "Required level: " + runeword.level;
-    runewordContainer.appendChild(runewordLevel);
+      const runewordLevel = document.createElement("p");
+      runewordLevel.classList.add("runeword-level");
+      runewordLevel.textContent = "Required level: " + runeword.level;
+      runewordContainer.appendChild(runewordLevel);
 
-    const runewordAttributes = document.createElement("ul");
-    runewordAttributes.classList.add("runeword-attributes");
-    for (attribute of runeword.attributes) {
-      const runewordAttribute = document.createElement("li");
-      runewordAttribute.textContent = attribute;
-      runewordAttributes.appendChild(runewordAttribute);
+      const runewordAttributes = document.createElement("ul");
+      runewordAttributes.classList.add("runeword-attributes");
+      for (attribute of runeword.attributes) {
+        const runewordAttribute = document.createElement("li");
+        runewordAttribute.textContent = attribute;
+        runewordAttributes.appendChild(runewordAttribute);
+      }
+      runewordContainer.appendChild(runewordAttributes);
+
+      runewordsElement.appendChild(runewordContainer);
     }
-    runewordContainer.appendChild(runewordAttributes);
-
-    runewordsElement.appendChild(runewordContainer);
   }
 }
 

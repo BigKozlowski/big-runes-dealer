@@ -45,7 +45,6 @@ button {
 
 .content-container {
   display: flex;
-  justify-content: space-between;
 }
 
 .availible-runewords-container {

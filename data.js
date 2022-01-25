@@ -1482,7 +1482,7 @@ const runeWords = [
 
 const runes = [
   {
-    name: "el",
+    name: "El",
     image: "static/images/runes/el.png",
     altText: "El rune",
     weapon: "+50 to attack rating, +1 to light radius",
@@ -1491,7 +1491,7 @@ const runes = [
     level: 11,
   },
   {
-    name: "eld",
+    name: "Eld",
     image: "static/images/runes/eld.png",
     altText: "Eld rune",
     weapon: "+75% damage vs Undead",
@@ -1500,7 +1500,7 @@ const runes = [
     level: 11,
   },
   {
-    name: "tir",
+    name: "Tir",
     image: "static/images/runes/tir.png",
     altText: "Tir rune",
     weapon: "+2 mana after each kill",
@@ -1509,7 +1509,7 @@ const runes = [
     level: 13,
   },
   {
-    name: "nef",
+    name: "Nef",
     image: "static/images/runes/nef.png",
     altText: "Nef rune",
     weapon: "Knockback",
@@ -1518,7 +1518,7 @@ const runes = [
     level: 13,
   },
   {
-    name: "eth",
+    name: "Eth",
     image: "static/images/runes/eth.png",
     altText: "Eth rune",
     weapon: "-25% To Target Defense",
@@ -1527,7 +1527,7 @@ const runes = [
     level: 15,
   },
   {
-    name: "ith",
+    name: "Ith",
     image: "static/images/runes/ith.png",
     altText: "Ith rune",
     weapon: "+9 To Maximum Damage",
@@ -1536,7 +1536,7 @@ const runes = [
     level: 15,
   },
   {
-    name: "tal",
+    name: "Tal",
     image: "static/images/runes/tal.png",
     altText: "Tal rune",
     weapon: "+75 Poison Damage Over 5 Seconds",
@@ -1545,7 +1545,7 @@ const runes = [
     level: 17,
   },
   {
-    name: "ral",
+    name: "Ral",
     image: "static/images/runes/ral.png",
     altText: "Ral rune",
     weapon: "Adds 5-30 Fire Damage",
@@ -1554,7 +1554,7 @@ const runes = [
     level: 19,
   },
   {
-    name: "ort",
+    name: "Ort",
     image: "static/images/runes/ort.png",
     altText: "ort rune",
     weapon: "Adds 1-50 Lightning Damage",
@@ -1563,7 +1563,7 @@ const runes = [
     level: 21,
   },
   {
-    name: "thul",
+    name: "Thul",
     image: "static/images/runes/thul.png",
     altText: "Thul rune",
     weapon: "Adds 3-14 Cold Damage - 3 Second Duration",
@@ -1572,7 +1572,7 @@ const runes = [
     level: 23,
   },
   {
-    name: "amn",
+    name: "Amn",
     image: "static/images/runes/amn.png",
     altText: "Amn rune",
     weapon: "7% Life Stolen Per Hit",
@@ -1581,7 +1581,7 @@ const runes = [
     level: 25,
   },
   {
-    name: "sol",
+    name: "Sol",
     image: "static/images/runes/sol.png",
     altText: "Sol rune",
     weapon: "+9 To Minimum Damage",
@@ -1590,7 +1590,7 @@ const runes = [
     level: 27,
   },
   {
-    name: "shael",
+    name: "Shael",
     image: "static/images/runes/shael.png",
     altText: "Shael rune",
     weapon: "20% Increased Attack Speed",
@@ -1599,7 +1599,7 @@ const runes = [
     level: 29,
   },
   {
-    name: "dol",
+    name: "Dol",
     image: "static/images/runes/dol.png",
     altText: "Dol rune",
     weapon: "Hit Causes Monster To Flee 25%",
@@ -1608,7 +1608,7 @@ const runes = [
     level: 31,
   },
   {
-    name: "hel",
+    name: "Hel",
     image: "static/images/runes/hel.png",
     altText: "Hel rune",
     weapon: "Requirements -20%",
@@ -1617,7 +1617,7 @@ const runes = [
     level: 1,
   },
   {
-    name: "io",
+    name: "Io",
     image: "static/images/runes/io.png",
     altText: "Io rune",
     weapon: "+10 To Vitality",
@@ -1626,7 +1626,7 @@ const runes = [
     level: 35,
   },
   {
-    name: "lum",
+    name: "Lum",
     image: "static/images/runes/lum.png",
     altText: "Lum rune",
     weapon: "+10 To Energy",
@@ -1635,7 +1635,7 @@ const runes = [
     level: 37,
   },
   {
-    name: "ko",
+    name: "Ko",
     image: "static/images/runes/ko.png",
     altText: "Ko rune",
     weapon: "+10 To Dexterity",
@@ -1644,7 +1644,7 @@ const runes = [
     level: 39,
   },
   {
-    name: "fal",
+    name: "Fal",
     image: "static/images/runes/fal.png",
     altText: "Fal rune",
     weapon: "+10 To Strength",
@@ -1653,7 +1653,7 @@ const runes = [
     level: 41,
   },
   {
-    name: "lem",
+    name: "Lem",
     image: "static/images/runes/lem.png",
     altText: "Lem rune",
     weapon: "75% Extra Gold From Monsters",
@@ -1662,7 +1662,7 @@ const runes = [
     level: 43,
   },
   {
-    name: "pul",
+    name: "Pul",
     image: "static/images/runes/pul.png",
     altText: "Pul rune",
     weapon: "+75% Damage To Demons, +100 Attack Rating Against Demons",
@@ -1671,7 +1671,7 @@ const runes = [
     level: 45,
   },
   {
-    name: "um",
+    name: "Um",
     image: "static/images/runes/um.png",
     altText: "Um rune",
     weapon: "25% Chance of Open Wounds",
@@ -1680,7 +1680,7 @@ const runes = [
     level: 47,
   },
   {
-    name: "mal",
+    name: "Mal",
     image: "static/images/runes/mal.png",
     altText: "Mal rune",
     weapon: "Prevent Monster Heal",
@@ -1689,7 +1689,7 @@ const runes = [
     level: 49,
   },
   {
-    name: "ist",
+    name: "Ist",
     image: "static/images/runes/ist.png",
     altText: "Ist rune",
     weapon: "30% Better Chance of Getting Magic Items",
@@ -1698,7 +1698,7 @@ const runes = [
     level: 51,
   },
   {
-    name: "gul",
+    name: "Gul",
     image: "static/images/runes/gul.png",
     altText: "Gul rune",
     weapon: "20% Bonus To Attack Rating",
@@ -1707,7 +1707,7 @@ const runes = [
     level: 53,
   },
   {
-    name: "vex",
+    name: "Vex",
     image: "static/images/runes/vex.png",
     altText: "Vex rune",
     weapon: "7% Mana Stolen Per Hit",
@@ -1716,7 +1716,7 @@ const runes = [
     level: 55,
   },
   {
-    name: "ohm",
+    name: "Ohm",
     image: "static/images/runes/ohm.png",
     altText: "Ohm rune",
     weapon: "+50% Enhanced Damage",
@@ -1725,7 +1725,7 @@ const runes = [
     level: 57,
   },
   {
-    name: "lo",
+    name: "Lo",
     image: "static/images/runes/lo.png",
     altText: "Lo rune",
     weapon: "20% Deadly Strike",
@@ -1734,7 +1734,7 @@ const runes = [
     level: 59,
   },
   {
-    name: "sur",
+    name: "Sur",
     image: "static/images/runes/sur.png",
     altText: "Sur rune",
     weapon: "Hit Blinds Target",
@@ -1743,7 +1743,7 @@ const runes = [
     level: 61,
   },
   {
-    name: "ber",
+    name: "Ber",
     image: "static/images/runes/ber.png",
     altText: "Ber rune",
     weapon: "20% Chance of Crushing Blow",
@@ -1752,7 +1752,7 @@ const runes = [
     level: 63,
   },
   {
-    name: "jah",
+    name: "Jah",
     image: "static/images/runes/jah.png",
     altText: "Jah rune",
     weapon: "Ignore Target's Defense",
@@ -1761,7 +1761,7 @@ const runes = [
     level: 65,
   },
   {
-    name: "cham",
+    name: "Cham",
     image: "static/images/runes/cham.png",
     altText: "Cham rune",
     weapon: "Freeze Target +3",
@@ -1770,7 +1770,7 @@ const runes = [
     level: 67,
   },
   {
-    name: "zod",
+    name: "Zod",
     image: "static/images/runes/zod.png",
     altText: "Zod rune",
     weapon: "Indestructible",
