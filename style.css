@@ -31,10 +31,12 @@ h1 strong {
 
 .content-container {
   display: flex;
+  justify-content: space-between;
 }
 
 .availible-runewords-container {
   margin-left: 0.5rem;
+  display: flex;
 }
 
 .availible-runewords {
@@ -55,14 +57,14 @@ h1 strong {
 .runes-inventory {
   align-self: flex-start;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  flex-basis: 360px;
+  grid-template-columns: repeat(6, 1fr);
+  flex-basis: 700px;
   flex-shrink: 0;
   flex-grow: 0;
 }
 
 .search-controls {
-  grid-column: 1 / 4;
+  grid-column: 1 / 7;
 }
 
 .rune-container {
@@ -111,4 +113,15 @@ h1 strong {
   margin: 0;
   text-align: center;
   padding: 0.1rem 0.5rem;
+}
+
+@media screen and (max-width: 1439px) {
+  .runes-inventory {
+    grid-template-columns: repeat(3, 1fr);
+    flex-basis: 360px;
+  }
+
+  .search-controls {
+    grid-column: 1 / 4;
+  }
 }
