@@ -19,7 +19,12 @@ function addRune(event) {
 }
 
 function renderRunes() {
-  runesInventoryElement.innerHTML = "";
+  runesInventoryElement.innerHTML = `
+  <div class="search-controls" id="search-controls">
+    <button>Weapon runewords</button>
+    <button>Armor runewords</button>
+    <button>All runewords</button>
+  `;
   for (rune of runes) {
     const runeContainer = document.createElement("div");
     runeContainer.classList.add("rune-container");
