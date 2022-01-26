@@ -55,6 +55,10 @@ h1 strong {
   color: var(--main-accent-color);
 }
 
+.active {
+  background-color: var(--main-accent-color);
+}
+
 button {
   padding: 0;
   font-family: inherit;
@@ -101,6 +105,13 @@ button {
   flex-shrink: 0;
   flex-grow: 0;
   gap: 0.1rem;
+}
+
+.bases-select,
+.sockets-select {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .search-controls {

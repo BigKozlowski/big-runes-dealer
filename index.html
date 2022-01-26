@@ -18,7 +18,12 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="style.css" />
-    <script src="data.js" defer></script>
+    <script src="./data/runes.js"></script>
+    <script src="./data/runewords.js"></script>
+    <script src="./data/bases.js"></script>
+    <script src="./profiles.js"></script>
+    <script src="./storage.js"></script>
+    <!-- <script src="data.js" defer></script> -->
     <script src="script.js" defer></script>
   </head>
   <body>
@@ -42,13 +47,27 @@
 
     <body>
       <div class="content-container" id="content-container">
-        <div class="runes-inventory" id="runes-inventory">
-          <div class="search-controls" id="search-controls">
-            <button>Weapon</button>
-            <button>Armor</button>
-            <button>All runewords</button>
+        <div class="search-and-inventory">
+          <div class="search">
+            <div class="search-controls" id="search-controls">
+              <div class="bases-select" id="bases-select">
+                <button>Bases</button>
+                <select id="bases-selection"></select>
+              </div>
+
+              <div class="sockets-select" id="sockets-select">
+                <button>Sockets</button>
+                <select id="sockets-selection"></select>
+              </div>
+
+              <button class="consider-runes active" id="consider-runes">
+                Runes
+              </button>
+            </div>
           </div>
+          <div class="runes-inventory" id="runes-inventory"></div>
         </div>
+
         <div
           class="availible-runewords-container"
           id="availible-runewords-container"

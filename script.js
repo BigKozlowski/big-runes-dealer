@@ -1,36 +1,53 @@
-let activeProfile = 0;
-let playerProfiles = [
-  {
-    name: "default",
-  },
-];
+let considerRunes = true;
+let considerSockets = false;
+let allowedSockets = 2;
+let considerBases = false;
+let allowedBase = "Amazon bow";
+
 const runesInventoryElement = document.getElementById("runes-inventory");
 const runewordsElement = document.getElementById("availible-runewords");
 const profilesElement = document.getElementById("profiles-element");
+const basesSelectElement = document.getElementById("bases-selection");
+const socketsSelectElement = document.getElementById("sockets-selection");
 
 const newProfileButton = document.getElementById("add-profile-btn");
 const editProfileButton = document.getElementById("edit-profile-btn");
 const deleteProfileButton = document.getElementById("delete-profile-btn");
+const considerBaseButton = document.querySelector(".bases-select button");
+const considerSocketsButton = document.querySelector(".sockets-select button");
+const considerRunesButton = document.getElementById("consider-runes");
 
-function isStorageEmpty() {
-  if (localStorage.getItem("profiles")) {
-    return false;
+function renderBases() {
+  for (element of bases) {
+    const singleBase = document.createElement("option");
+    singleBase.textContent = element;
+    singleBase.value = element;
+    basesSelectElement.appendChild(singleBase);
   }
-  return true;
 }
 
-function loadProfiles() {
-  if (!isStorageEmpty()) {
-    playerProfiles = [];
-    for (element of JSON.parse(localStorage.getItem("profiles"))) {
-      playerProfiles.push(element);
+function renderSockets() {
+  for (let i = 2; i <= 6; i++) {
+    const socketsNumber = document.createElement("option");
+    socketsNumber.textContent = i;
+    socketsNumber.value = i;
+    socketsSelectElement.appendChild(socketsNumber);
+  }
+}
+
+function checkBase(bases) {
+  let check = false;
+  for (base of bases) {
+    if (base === allowedBase) {
+      check = true;
     }
-  } else {
   }
+  return check || !considerBases;
 }
 
-function storeProfiles() {
-  localStorage.setItem("profiles", JSON.stringify(playerProfiles));
+function checkSockets(runes) {
+  const socketsCount = runes.length;
+  return socketsCount == allowedSockets || !considerSockets;
 }
 
 function initiateRunes() {
@@ -63,14 +80,8 @@ function addRune(event) {
 }
 
 function renderRunes() {
-  runesInventoryElement.innerHTML = "";
-  // runesInventoryElement.innerHTML = `
-  // <div class="search-controls" id="search-controls">
-  //           <button>Weapon</button>
-  //           <button>Armor</button>
-  //           <button>All runewords</button>
-  //         </div>
-  // `;
+  // runesInventoryElement.innerHTML = "";
+  runesInventoryElement.innerHTML = ``;
   for (rune of runes) {
     const runeContainer = document.createElement("div");
     runeContainer.classList.add("rune-container");
@@ -130,59 +141,7 @@ function countRunes(runes) {
   return counts;
 }
 
-function switchProfile(event) {
-  activeProfile = event.target.dataset.id;
-  renderProfiles();
-  console.log(activeProfile);
-}
-
-function addProfile() {
-  const profileName = window.prompt("Enter profile name");
-  if (profileName) {
-    playerProfiles.push({ name: profileName });
-    activeProfile = playerProfiles.length - 1;
-    renderProfiles();
-    storeProfiles();
-  }
-}
-
-function editProfile() {
-  playerProfiles[activeProfile].name = window.prompt("Enter profile name");
-  renderProfiles();
-  storeProfiles();
-}
-
-function deleteProfile() {
-  if (playerProfiles.length == 1) {
-    window.alert("You can`t delete the only profile!");
-  } else {
-    playerProfiles.splice(activeProfile, 1);
-    activeProfile = playerProfiles.length - 1;
-    renderProfiles();
-    storeProfiles();
-  }
-}
-
-function renderProfiles() {
-  initiateRunes();
-  profilesElement.innerHTML = "";
-
-  for (let i = 0; i < playerProfiles.length; i++) {
-    const profileButton = document.createElement("button");
-    profileButton.classList.add("profile-btn");
-    if (i == activeProfile) {
-      profileButton.classList.add("active-profile");
-    }
-    profileButton.textContent = playerProfiles[i].name;
-    profileButton.dataset.id = i;
-    profileButton.addEventListener("click", switchProfile);
-    profilesElement.appendChild(profileButton);
-  }
-  renderRunewords();
-  renderRunes();
-}
-
-function checkRuneword(runes) {
+function checkRunes(runes) {
   const runesCount = countRunes(runes);
 
   let check = true;
@@ -191,13 +150,18 @@ function checkRuneword(runes) {
       check = false;
     }
   }
-  return check;
+  return check || !considerRunes;
 }
 
 function renderRunewords() {
   runewordsElement.innerHTML = "";
   for (runeword of runeWords) {
-    if (checkRuneword(runeword.runes)) {
+    console.log(runeword.name);
+    if (
+      checkRunes(runeword.runes) &&
+      checkBase(runeword.itemTypes) &&
+      checkSockets(runeword.runes)
+    ) {
       const runewordContainer = document.createElement("li");
       runewordContainer.classList.add("runeword-container");
 
@@ -235,12 +199,52 @@ function renderRunewords() {
   }
 }
 
-newProfileButton.addEventListener("click", addProfile);
-editProfileButton.addEventListener("click", editProfile);
-deleteProfileButton.addEventListener("click", deleteProfile);
-
 loadProfiles();
 initiateRunes();
 renderProfiles();
 renderRunes();
 renderRunewords();
+renderBases();
+renderSockets();
+
+newProfileButton.addEventListener("click", addProfile);
+editProfileButton.addEventListener("click", editProfile);
+deleteProfileButton.addEventListener("click", deleteProfile);
+basesSelectElement.addEventListener("change", (event) => {
+  allowedBase = event.target.value;
+  renderRunewords();
+});
+socketsSelectElement.addEventListener("change", (event) => {
+  allowedSockets = event.target.value;
+  renderRunewords();
+});
+
+considerBaseButton.addEventListener("click", () => {
+  if (considerBases) {
+    considerBaseButton.classList.remove("active");
+  } else {
+    considerBaseButton.classList.add("active");
+  }
+  considerBases = !considerBases;
+  renderRunewords();
+});
+
+considerSocketsButton.addEventListener("click", () => {
+  if (considerSockets) {
+    considerSocketsButton.classList.remove("active");
+  } else {
+    considerSocketsButton.classList.add("active");
+  }
+  considerSockets = !considerSockets;
+  renderRunewords();
+});
+
+considerRunesButton.addEventListener("click", () => {
+  if (considerRunes) {
+    considerRunesButton.classList.remove("active");
+  } else {
+    considerRunesButton.classList.add("active");
+  }
+  considerRunes = !considerRunes;
+  renderRunewords();
+});
