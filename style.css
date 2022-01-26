@@ -203,6 +203,11 @@ button {
 }
 
 @media screen and (max-width: 700px) {
+  .search-controls {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
   .runes-inventory {
     flex-basis: 200px;
     gap: 0.4rem;
