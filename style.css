@@ -23,6 +23,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
 
@@ -99,12 +100,14 @@ button {
   flex-basis: 700px;
   flex-shrink: 0;
   flex-grow: 0;
+  gap: 0.1rem;
 }
 
 .search-controls {
   grid-column: 1 / 7;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 0.5rem;
 }
 
 .rune-container {
@@ -200,14 +203,15 @@ button {
 
   .runes-inventory {
     flex-basis: 200px;
+    gap: 0.4rem;
   }
 
   .rune-container {
-    padding: 0 0.2rem;
+    padding: 0;
   }
 
   .rune-container p {
-    font-size: 0.7rem;
+    font-size: 0.5rem;
     padding: 0.1rem 0.1rem;
   }
 
