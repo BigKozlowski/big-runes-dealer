@@ -10,7 +10,7 @@
     <link
       rel="icon"
       type="image/png"
-      href="https://www.google.com/s2/u/0/favicons?domain=endless-scroller.netlify.app"
+      href="https://www.google.com/s2/u/0/favicons?domain=big-scroller.netlify.app"
     />
     <link
       rel="stylesheet"
@@ -27,8 +27,18 @@
     <header>
       <h1>Big <strong>Runes</strong> Dealer</h1>
       <nav class="navbar" id="navbar">
-        <button class="add-profile-button">New profile</button>
-        <button class="edit-profile-button">Edit profile</button>
+        <div class="profile-controls" id="profile-controls">
+          <button class="add-profile-btn" id="add-profile-btn">
+            New profile
+          </button>
+          <button class="edit-profile-btn" id="edit-profile-btn">
+            Edit profile
+          </button>
+          <button class="delete-profile-btn" id="delete-profile-btn">
+            Delete profile
+          </button>
+        </div>
+        <div class="profiles-element" id="profiles-element"></div>
       </nav>
     </header>
 
@@ -36,8 +46,8 @@
       <div class="content-container" id="content-container">
         <div class="runes-inventory" id="runes-inventory">
           <div class="search-controls" id="search-controls">
-            <button>Weapon runewords</button>
-            <button>Armor runewords</button>
+            <button>Weapon</button>
+            <button>Armor</button>
             <button>All runewords</button>
           </div>
         </div>

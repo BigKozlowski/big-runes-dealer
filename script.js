@@ -1,10 +1,25 @@
-// const playerRunes = {};
-// rune = "Ral";
-// playerRunes[rune] = 1;
-// console.log(playerRunes.Ral);
-const playerRunes = {};
+let activeProfile = 0;
+let playerProfiles = [
+  {
+    name: "default",
+  },
+];
+let playerRunes = playerProfiles[activeProfile];
 const runesInventoryElement = document.getElementById("runes-inventory");
 const runewordsElement = document.getElementById("availible-runewords");
+const profilesElement = document.getElementById("profiles-element");
+
+const newProfileButton = document.getElementById("add-profile-btn");
+const editProfileButton = document.getElementById("edit-profile-btn");
+const deleteProfileButton = document.getElementById("delete-profile-btn");
+
+function initiateRunes() {
+  for (rune of runes) {
+    if (!playerRunes[rune.name]) {
+      playerRunes[rune.name] = 0;
+    }
+  }
+}
 
 function removeRune(event) {
   if (playerRunes[event.target.dataset.rune]) {
@@ -15,7 +30,12 @@ function removeRune(event) {
 }
 
 function addRune(event) {
-  playerRunes[event.target.dataset.rune]++;
+  if (!playerRunes[event.target.dataset.rune]) {
+    playerRunes[event.target.dataset.rune] = 1;
+  } else {
+    playerRunes[event.target.dataset.rune]++;
+  }
+
   renderRunes();
   renderRunewords();
 }
@@ -23,9 +43,10 @@ function addRune(event) {
 function renderRunes() {
   runesInventoryElement.innerHTML = `
   <div class="search-controls" id="search-controls">
-    <button>Weapon runewords</button>
-    <button>Armor runewords</button>
-    <button>All runewords</button>
+            <button>Weapon</button>
+            <button>Armor</button>
+            <button>All runewords</button>
+          </div>
   `;
   for (rune of runes) {
     const runeContainer = document.createElement("div");
@@ -54,10 +75,13 @@ function renderRunes() {
     runeName.textContent = rune.name;
     runeInfo.appendChild(runeName);
 
-    const runeCount = document.createElement("p");
-    runeCount.classList.add("rune-count");
-    runeCount.textContent = playerRunes[rune.name];
-    runeInfo.appendChild(runeCount);
+    if (playerRunes[rune.name]) {
+      const runeCount = document.createElement("p");
+      runeCount.classList.add("rune-count");
+      runeCount.textContent = playerRunes[rune.name];
+      runeInfo.appendChild(runeCount);
+    }
+
     runeContainer.appendChild(runeInfo);
 
     const addRuneButton = document.createElement("button");
@@ -81,6 +105,58 @@ function countRunes(runes) {
     }
   });
   return counts;
+}
+
+function switchProfile(event) {
+  activeProfile = event.target.dataset.id;
+  playerRunes = playerProfiles[activeProfile];
+  renderProfiles();
+  console.log(activeProfile);
+}
+
+function addProfile() {
+  const profileName = window.prompt("Enter profile name");
+  if (profileName) {
+    playerProfiles.push({ name: profileName });
+    activeProfile = playerProfiles.length - 1;
+    playerRunes = playerProfiles[activeProfile];
+    renderProfiles();
+  }
+}
+
+function editProfile() {
+  playerProfiles[activeProfile].name = window.prompt("Enter profile name");
+  renderProfiles();
+}
+
+function deleteProfile() {
+  if (playerProfiles.length == 1) {
+    window.alert("You can`t delete the only profile!");
+  } else {
+    playerProfiles.splice(activeProfile, 1);
+    activeProfile = playerProfiles.length - 1;
+    playerRunes = playerProfiles[activeProfile];
+    renderProfiles();
+  }
+}
+
+function renderProfiles() {
+  initiateRunes();
+  profilesElement.innerHTML = "";
+
+  for (let i = 0; i < playerProfiles.length; i++) {
+    const profileButton = document.createElement("button");
+    profileButton.classList.add("profile-btn");
+    if (i == activeProfile) {
+      profileButton.classList.add("active-profile");
+    }
+    profileButton.textContent = playerProfiles[i].name;
+    profileButton.dataset.id = i;
+    profileButton.addEventListener("click", switchProfile);
+    profilesElement.appendChild(profileButton);
+  }
+  renderRunewords();
+  renderRunes();
 }
 
 function checkRuneword(runes) {
@@ -136,8 +212,11 @@ function renderRunewords() {
   }
 }
 
-for (rune of runes) {
-  playerRunes[rune.name] = 0;
-}
+newProfileButton.addEventListener("click", addProfile);
+editProfileButton.addEventListener("click", editProfile);
+deleteProfileButton.addEventListener("click", deleteProfile);
+
+initiateRunes();
+renderProfiles();
 renderRunes();
 renderRunewords();
