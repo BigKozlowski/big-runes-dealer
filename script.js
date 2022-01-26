@@ -198,7 +198,7 @@ function renderRunewords() {
   for (runeword of runeWords) {
     if (checkRuneword(runeword.runes)) {
       const runewordContainer = document.createElement("li");
-      runewordContainer.classList.add("runeWord-container");
+      runewordContainer.classList.add("runeword-container");
 
       const runewordNameElement = document.createElement("h3");
       runewordNameElement.classList.add("runeword-name");

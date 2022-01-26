@@ -23,6 +23,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 0.5rem;
 }
 
 nav {
@@ -39,8 +40,8 @@ nav {
 }
 
 .profile-controls {
-  align-self: flex-end;
   display: flex;
+  flex-direction: row-reverse;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
@@ -154,7 +155,29 @@ button {
   padding: 0.1rem 0.5rem;
 }
 
-@media screen and (max-width: 1439px) {
+@media screen and (max-width: 1200px) {
+  .runes-inventory {
+    grid-template-columns: repeat(5, 1fr);
+    flex-basis: 360px;
+  }
+
+  .search-controls {
+    grid-column: 1 / 6;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .runes-inventory {
+    grid-template-columns: repeat(4, 1fr);
+    flex-basis: 360px;
+  }
+
+  .search-controls {
+    grid-column: 1 / 5;
+  }
+}
+
+@media screen and (max-width: 960px) {
   .runes-inventory {
     grid-template-columns: repeat(3, 1fr);
     flex-basis: 360px;
@@ -162,5 +185,43 @@ button {
 
   .search-controls {
     grid-column: 1 / 4;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  button {
+    font-size: 0.6rem;
+    padding: 0.125rem 0.25rem;
+  }
+
+  .runes-inventory {
+    flex-basis: 200px;
+  }
+
+  .rune-container {
+    padding: 0 0.2rem;
+  }
+
+  .rune-container p {
+    font-size: 0.7rem;
+    padding: 0.1rem 0.1rem;
+  }
+
+  .rune-img {
+    width: 20px;
+  }
+
+  .rune-container button {
+    height: 3rem;
+    width: 1rem;
+    border-radius: 4px;
+  }
+
+  .runeword-container {
+    font-size: 0.7rem;
   }
 }
