@@ -4,7 +4,6 @@ let playerProfiles = [
     name: "default",
   },
 ];
-let playerRunes = playerProfiles[activeProfile];
 const runesInventoryElement = document.getElementById("runes-inventory");
 const runewordsElement = document.getElementById("availible-runewords");
 const profilesElement = document.getElementById("profiles-element");
@@ -13,31 +12,54 @@ const newProfileButton = document.getElementById("add-profile-btn");
 const editProfileButton = document.getElementById("edit-profile-btn");
 const deleteProfileButton = document.getElementById("delete-profile-btn");
 
+function isStorageEmpty() {
+  if (localStorage.getItem("profiles")) {
+    return false;
+  }
+  return true;
+}
+
+function loadProfiles() {
+  if (!isStorageEmpty()) {
+    playerProfiles = [];
+    for (element of JSON.parse(localStorage.getItem("profiles"))) {
+      playerProfiles.push(element);
+    }
+  } else {
+  }
+}
+
+function storeProfiles() {
+  localStorage.setItem("profiles", JSON.stringify(playerProfiles));
+}
+
 function initiateRunes() {
   for (rune of runes) {
-    if (!playerRunes[rune.name]) {
-      playerRunes[rune.name] = 0;
+    if (!playerProfiles[activeProfile][rune.name]) {
+      playerProfiles[activeProfile][rune.name] = 0;
     }
   }
 }
 
 function removeRune(event) {
-  if (playerRunes[event.target.dataset.rune]) {
-    playerRunes[event.target.dataset.rune]--;
+  if (playerProfiles[activeProfile][event.target.dataset.rune]) {
+    playerProfiles[activeProfile][event.target.dataset.rune]--;
     renderRunes();
     renderRunewords();
+    storeProfiles();
   }
 }
 
 function addRune(event) {
-  if (!playerRunes[event.target.dataset.rune]) {
-    playerRunes[event.target.dataset.rune] = 1;
+  if (!playerProfiles[activeProfile][event.target.dataset.rune]) {
+    playerProfiles[activeProfile][event.target.dataset.rune] = 1;
   } else {
-    playerRunes[event.target.dataset.rune]++;
+    playerProfiles[activeProfile][event.target.dataset.rune]++;
   }
 
   renderRunes();
   renderRunewords();
+  storeProfiles();
 }
 
 function renderRunes() {
@@ -75,10 +97,10 @@ function renderRunes() {
     runeName.textContent = rune.name;
     runeInfo.appendChild(runeName);
 
-    if (playerRunes[rune.name]) {
+    if (playerProfiles[activeProfile][rune.name]) {
       const runeCount = document.createElement("p");
       runeCount.classList.add("rune-count");
-      runeCount.textContent = playerRunes[rune.name];
+      runeCount.textContent = playerProfiles[activeProfile][rune.name];
       runeInfo.appendChild(runeCount);
     }
 
@@ -109,7 +131,6 @@ function countRunes(runes) {
 
 function switchProfile(event) {
   activeProfile = event.target.dataset.id;
-  playerRunes = playerProfiles[activeProfile];
   renderProfiles();
   console.log(activeProfile);
 }
@@ -119,14 +140,15 @@ function addProfile() {
   if (profileName) {
     playerProfiles.push({ name: profileName });
     activeProfile = playerProfiles.length - 1;
-    playerRunes = playerProfiles[activeProfile];
     renderProfiles();
+    storeProfiles();
   }
 }
 
 function editProfile() {
   playerProfiles[activeProfile].name = window.prompt("Enter profile name");
   renderProfiles();
+  storeProfiles();
 }
 
 function deleteProfile() {
@@ -135,8 +157,8 @@ function deleteProfile() {
   } else {
     playerProfiles.splice(activeProfile, 1);
     activeProfile = playerProfiles.length - 1;
-    playerRunes = playerProfiles[activeProfile];
     renderProfiles();
+    storeProfiles();
   }
 }
 
@@ -164,7 +186,7 @@ function checkRuneword(runes) {
 
   let check = true;
   for (rune in runesCount) {
-    if (runesCount[rune] > playerRunes[rune]) {
+    if (runesCount[rune] > playerProfiles[activeProfile][rune]) {
       check = false;
     }
   }
@@ -216,6 +238,7 @@ newProfileButton.addEventListener("click", addProfile);
 editProfileButton.addEventListener("click", editProfile);
 deleteProfileButton.addEventListener("click", deleteProfile);
 
+loadProfiles();
 initiateRunes();
 renderProfiles();
 renderRunes();
