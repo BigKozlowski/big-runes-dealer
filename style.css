@@ -191,6 +191,36 @@ button {
   }
 }
 
+@media screen and (max-width: 700px) {
+  .runes-inventory {
+    flex-basis: 200px;
+    gap: 0.4rem;
+  }
+
+  .rune-container {
+    padding: 0;
+  }
+
+  .rune-container p {
+    font-size: 0.5rem;
+    padding: 0.1rem 0.1rem;
+  }
+
+  .rune-img {
+    width: 20px;
+  }
+
+  .rune-container button {
+    height: 3rem;
+    width: 1rem;
+    border-radius: 4px;
+  }
+
+  .runeword-container {
+    font-size: 0.7rem;
+  }
+}
+
 @media screen and (max-width: 420px) {
   h1 {
     font-size: 1.5rem;
