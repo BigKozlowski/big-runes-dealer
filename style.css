@@ -13,6 +13,7 @@ html {
 body {
   margin: 0;
   padding: 0 1rem;
+  padding-bottom: 1rem;
   min-height: 100vh;
   font-family: Diablo;
   color: var(--main-content-color);
