@@ -156,7 +156,6 @@ function checkRunes(runes) {
 function renderRunewords() {
   runewordsElement.innerHTML = "";
   for (runeword of runeWords) {
-    console.log(runeword.name);
     if (
       checkRunes(runeword.runes) &&
       checkBase(runeword.itemTypes) &&

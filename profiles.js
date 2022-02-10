@@ -8,7 +8,6 @@ let playerProfiles = [
 function switchProfile(event) {
   activeProfile = event.target.dataset.id;
   renderProfiles();
-  console.log(activeProfile);
 }
 
 function addProfile() {
